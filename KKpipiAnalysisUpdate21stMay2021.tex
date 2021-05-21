@@ -163,22 +163,6 @@
 \end{frame}
 
 \begin{frame}{Binning scheme}
-  \begin{itemize}
-    \setlength\itemsep{1.2em}
-    \item{Use LHCb model (\href{https://arxiv.org/abs/1811.08304}{arXiv:1811.08304}) implemented in AmpGen}
-    \item{Calculate $D^0$ and $\bar{D^0}$ amplitude from $D$ daughter momenta}
-    \item{$\mathcal{A}(D^0)/\mathcal{A}(\bar{D^0}) = r_D\exp(i\delta_D)$}
-    \item{Bin along $\delta_D$ to avoid dilution during averaging}
-    \item{Enhance interference by separating bin $+i$ and $-i$ at $r_D = 1$}
-    \item{Analogy from $K_S\pi^+\pi^-$: $m^2_+ = m^2_-$ separates CF and DCS resonances}
-    \item{Maximize $Q = \frac{1}{2}(Q_+ + Q_-)$ by moving bin boundaries symmetrically around $\delta_D = 0$:}
-  \end{itemize}
-  \begin{equation*}
-    Q_\pm^2 = 1 - \sum_i\frac{K_i\bar{K_i}(1 - c_i^2 - s_i^2)}{N^\pm_i}\Big/\sum_iK_i
-  \end{equation*}
-\end{frame}
-
-\begin{frame}{Binning scheme}
   \begin{figure}
     \centering
     \vspace{-0.2cm}
@@ -297,10 +281,10 @@
     \hline
     Standard cuts                     & Value \\
     \hline
-    Bachelor momentum $p$             & $< \SI{100}{\giga\eV}$ \\
     Bachelor has RICH                 & True \\
-    $K^\pm$ from $D$ momentum $p$     & $< \SI{100}{\giga\eV}$ \\
     $K^\pm$ has RICH                  & True \\
+    Bachelor momentum $p$             & $< \SI{100}{\giga\eV}$ \\
+    $K^\pm$ from $D$ momentum $p$     & $< \SI{100}{\giga\eV}$ \\
     $D$ invariant mass                & Within $\pm\SI{25}{\mega\eV}$ of $m_{D^0}^\text{PDG}$ \\
     DecayTreeFitter (DTF) convergence & True \\
     $B^\pm$ DTF mass range            & $[5080, 5800]\si{\mega\eV}$ \\
@@ -314,6 +298,7 @@
     \item{BDTG from TMVA Toolkit}
     \item{Signal sample: $B^\pm\to DK^\pm$ and $B^\pm\to D\pi^\pm$ MC samples}
     \item{Background sample: $B^\pm\to D\pi^\pm$ using $m_{B^\pm}^\text{DTF}\in[5800, 7000]\si{\mega\eV}$}
+    \item{Random, equal sized test and training samples}
   \end{itemize}
 \end{frame}
 
@@ -382,6 +367,9 @@
       \caption{BDT output on a logarithmic scale}
     \end{subfigure}
   \end{figure}
+  \begin{itemize}
+    \item{Choose working point at $0.75$}
+  \end{itemize}
 \end{frame}
 
 \begin{frame}{Charmless backgrounds from \texorpdfstring{$B^\pm\to K^+K^-\pi^+\pi^-K^\pm$}{B to K K pi pi K}}
@@ -790,7 +778,30 @@
   \end{itemize}
 \end{frame}
 
-\begin{frame}{Backup slides: DaVinci error}
+\section{Backup}
+\begin{frame}{Backup}
+  \begin{center}
+    {\huge Backup}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Backup: Binning scheme}
+  \begin{itemize}
+    \setlength\itemsep{1.2em}
+    \item{Use LHCb model (\href{https://arxiv.org/abs/1811.08304}{arXiv:1811.08304}) implemented in AmpGen}
+    \item{Calculate $D^0$ and $\bar{D^0}$ amplitude from $D$ daughter momenta}
+    \item{$\mathcal{A}(D^0)/\mathcal{A}(\bar{D^0}) = r_D\exp(i\delta_D)$}
+    \item{Bin along $\delta_D$ to avoid dilution during averaging}
+    \item{Enhance interference by separating bin $+i$ and $-i$ at $r_D = 1$}
+    \item{Analogy from $K_S\pi^+\pi^-$: $m^2_+ = m^2_-$ separates CF and DCS resonances}
+    \item{Maximize $Q = \frac{1}{2}(Q_+ + Q_-)$ by moving bin boundaries symmetrically around $\delta_D = 0$:}
+  \end{itemize}
+  \begin{equation*}
+    Q_\pm^2 = 1 - \sum_i\frac{K_i\bar{K_i}(1 - c_i^2 - s_i^2)}{N^\pm_i}\Big/\sum_iK_i
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Backup: DaVinci error}
   \begin{center}
     DaVinci error message:
   \end{center}
