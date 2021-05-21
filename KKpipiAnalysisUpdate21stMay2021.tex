@@ -394,11 +394,11 @@
     \vspace{-0.2cm}
     \begin{subfigure}{0.5\textwidth}
       \includegraphics[width = 1.0\textwidth]{Plots/B2DKLower_Charmless.png}
-      \caption{No charmless cuts \\Yield: $\SI{2605(57)}{}$}
+      \caption{No flight significance cut \\ Yield: $\SI{2605(57)}{}$}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \includegraphics[width = 1.0\textwidth]{Plots/B2DKLowerFDCut_Charmless.png}
-      \caption{Flight significance cut at $2$ \\Yield: $\SI{110(19)}{}$}
+      \caption{Flight significance cut at $2$ \\ Yield: $\SI{110(19)}{}$}
     \end{subfigure}
   \end{figure}
   \begin{itemize}
@@ -413,7 +413,7 @@
     \vspace{-0.2cm}
     \begin{subfigure}{0.5\textwidth}
       \includegraphics[width = 1.0\textwidth]{Plots/B2DpiLower_Charmless.png}
-      \caption{No charmless cuts}
+      \caption{No flight significance cut}
     \end{subfigure}%
     \begin{subfigure}{0.5\textwidth}
       \includegraphics[width = 1.0\textwidth]{Plots/B2DpiLowerFDCut_Charmless.png}
@@ -474,7 +474,6 @@
   \end{center}
 \end{frame}
 
-\section{Global fit}
 \begin{frame}{Signal parameterisation}
   \begin{itemize}
     \setlength\itemsep{1.2em}
@@ -564,18 +563,217 @@
     \centering
     \vspace{-0.2cm}
     \begin{subfigure}{0.33\textwidth}
-      \includegraphics[width = 1.0\textwidth]{Plots/low_dpi_ratio_b2drho_vs_b2dstpi_value.png}
+      \includegraphics[width = 1.0\textwidth]{Plots/low_sigma_pi_fiveL_value.png}
       \caption{Value}
     \end{subfigure}%
     \begin{subfigure}{0.33\textwidth}
-      \includegraphics[width = 1.0\textwidth]{Plots/low_dpi_ratio_b2drho_vs_b2dstpi_error.png}
+      \includegraphics[width = 1.0\textwidth]{Plots/low_sigma_pi_fiveL_error.png}
       \caption{Error}
     \end{subfigure}%
     \begin{subfigure}{0.33\textwidth}
-      \includegraphics[width = 1.0\textwidth]{Plots/low_dpi_ratio_b2drho_vs_b2dstpi_pull.png}
+      \includegraphics[width = 1.0\textwidth]{Plots/low_sigma_pi_fiveL_pull.png}
       \caption{Pull}
     \end{subfigure}
-    \caption{\texttt{low\_dpi\_ratio\_b2drho\_vs\_b2dstpi}}
+    \caption{\texttt{low\_sigma\_pi\_fiveL\_error.png}}
+  \end{figure}
+\end{frame}
+
+\section{Binned CP fit}
+\begin{frame}{Binned CP fit}
+  \begin{center}
+    {\huge Binned CP fit}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Binned CP fit}
+  \begin{itemize}
+    \setlength\itemsep{1.2em}
+    \item{Use $8$ bins for now}
+    \item{$c_i$ and $s_i$ calculated using MC integration of LHCb amplitude model}
+    \item{Fit for CP observables}
+    \item{PDF shape parameters fixed from global fit}
+    \item{Yield of signal, low mass partially reconstructed background and combinatorial background floated}
+    \item{Fractional yields $K_i$ ($F_i$) floated}
+  \end{itemize}
+  \begin{equation*}
+    \mathcal{R}_i = 
+    \begin{cases}
+      F_i, \quad i = -8 \\
+      F_i/\sum_{j\geq i}, -8 < i\leq+8
+    \end{cases}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Fitted CP observables}
+  \begin{figure}
+    \centering
+    \vspace{-0.2cm}
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/CPContours.png}
+      \caption{$x_\pm^{DK}$ and $y_\pm^{DK}$}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/CPXiContours.png}
+      \caption{$x_\xi^{D\pi}$ and $y_\xi^{D\pi}$}
+    \end{subfigure}
+    \caption{$68.2\%$ and $95.5\%$ confidence intervals of CP observables}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{CP fit toy studies}
+  \begin{figure}
+    \centering
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_xp_dk_value.png}
+      \caption{Value}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_xp_dk_error.png}
+      \caption{Error}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_xp_dk_pull.png}
+      \caption{Pull}
+    \end{subfigure}
+    \caption{$x_+^{DK}$}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \vspace{-0.15cm}
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_xm_dk_value.png}
+      \caption{Value}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_xm_dk_error.png}
+      \caption{Error}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_xm_dk_pull.png}
+      \caption{Pull}
+    \end{subfigure}
+    \caption{$x_-^{DK}$}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{CP fit toy studies}
+  \begin{figure}
+    \centering
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_yp_dk_value.png}
+      \caption{Value}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_yp_dk_error.png}
+      \caption{Error}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_yp_dk_pull.png}
+      \caption{Pull}
+    \end{subfigure}
+    \caption{$y_+^{DK}$}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \vspace{-0.15cm}
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_ym_dk_value.png}
+      \caption{Value}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_ym_dk_error.png}
+      \caption{Error}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_ym_dk_pull.png}
+      \caption{Pull}
+    \end{subfigure}
+    \caption{$y_-^{DK}$}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{CP fit toy studies}
+  \begin{figure}
+    \centering
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_Re_xi_dpi_value.png}
+      \caption{Value}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_Re_xi_dpi_error.png}
+      \caption{Error}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_Re_xi_dpi_pull.png}
+      \caption{Pull}
+    \end{subfigure}
+    \caption{$x_\xi^{D\pi}$}
+  \end{figure}
+  \begin{figure}
+    \centering
+    \vspace{-0.15cm}
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_Im_xi_dpi_value.png}
+      \caption{Value}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_Im_xi_dpi_error.png}
+      \caption{Error}
+    \end{subfigure}%
+    \begin{subfigure}{0.25\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/A_Im_xi_dpi_pull.png}
+      \caption{Pull}
+    \end{subfigure}
+    \caption{$y_\xi^{D\pi}$}
+  \end{figure}
+\end{frame}
+
+\section{GammaCombo}
+\begin{frame}{GammaCombo}
+  \begin{center}
+    {\huge GammaCombo}
+  \end{center}
+\end{frame}
+
+\begin{frame}{GammaCombo $\delta_B^{DK}$ and $r_B^{DK}$}
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{Plots/cartesian_cartesian_d_dk.png}
+      \caption{$\delta_B^{DK}$}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{Plots/cartesian_cartesian_r_dk.png}
+      \caption{$r_B^{DK}$}
+    \end{subfigure}
+    \caption{}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{GammaCombo $\delta_B^{D\pi}$ and $r_B^{D\pi}$}
+  \begin{figure}[H]
+    \centering
+    \begin{subfigure}{.5\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{Plots/cartesian_cartesian_d_dpi.png}
+      \caption{$\delta_B^{D\pi}$}
+    \end{subfigure}%
+    \begin{subfigure}{.5\textwidth}
+      \centering
+      \includegraphics[width=1\linewidth]{Plots/cartesian_cartesian_r_dpi.png}
+      \caption{$r_B^{D\pi}$}
+    \end{subfigure}
+    \caption{}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{GammaCombo $\gamma$}
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{Plots/cartesian_cartesian_gamma.png}
+    \caption{$\gamma$}
   \end{figure}
 \end{frame}
 
