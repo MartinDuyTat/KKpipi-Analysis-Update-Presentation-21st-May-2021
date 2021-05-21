@@ -64,8 +64,8 @@
   \tableofcontents
 \end{frame}
 
-\section{Introduction (skip)}
-\begin{frame}{Introduction (skip)}
+\section{Introduction}
+\begin{frame}{Introduction}
   \begin{figure}[H]
     \centering
     \vspace{0.3cm}
@@ -137,7 +137,7 @@
   \end{center}
 \end{frame}
 
-\begin{frame}{Introduction (skip)}
+\begin{frame}{Introduction}
   \begin{itemize}
     \item{CP observables:}
     \begin{itemize}
@@ -156,6 +156,12 @@
 \end{frame}
 
 \section{Binning scheme}
+\begin{frame}{Binning Scheme}
+  \begin{center}
+    {\huge Binning scheme}
+  \end{center}
+\end{frame}
+
 \begin{frame}{Binning scheme}
   \begin{itemize}
     \setlength\itemsep{1.2em}
@@ -234,6 +240,342 @@
       \includegraphics[width = 1.0\textwidth]{Plots/GammaDistribution8BinsVariableWidth.png}
       \caption{$2\times 8$ binning scheme \\ $\Delta\gamma = \SI{12}{\degree}$}
     \end{subfigure}
+  \end{figure}
+\end{frame}
+
+\section{\texorpdfstring{$B^\pm\to(K^+K^-\pi^+\pi^-)_Dh^\pm$}{B to K+ K- pi+ pi- h} selection}
+\begin{frame}{$B^\pm\to(K^+K^-\pi^+\pi^-)_Dh^\pm$ selection}
+  \begin{center}
+    {\huge $B^\pm\to(K^+K^-\pi^+\pi^-)_Dh^\pm$ selection}
+  \end{center}
+\end{frame}
+
+\begin{frame}{Samples}
+  \begin{itemize}
+    \setlength\itemsep{1.2em}
+    \item{Stripping lines:}
+    \begin{itemize}
+      \item{$\text{StrippingB2D0PiD2HHHHBeauty2CharmLineDecision}$}
+      \item{$\text{StrippingB2D0KD2HHHHBeauty2CharmLineDecision}$}
+    \end{itemize}
+    \item{Data samples: 2015-2018 (2011-2012 not processed yet)}
+    \item{MC samples: 2016-2018, filtered, AmpGen}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Initial cuts}
+  \begin{center}
+    Trigger requirements identical to that of LHCb-ANA-2020-001
+  \end{center}
+  \centering
+  \def\arraystretch{1.2}%
+  \begin{tabular}{|l|l|}
+    \hline
+    Run 1 trigger        & (\texttt{Bu\_L0Global\_TIS} or \texttt{Bu\_L0HadronDecision\_TOS}) \\
+    requirements         & and (\texttt{Bu\_Hlt1TrackAllL0Decision\_TOS}) \\
+                         & and (\texttt{Bu\_Hlt2Topo2BodyBBDTDecision\_TOS} or \\
+                         & \texttt{Bu\_Hlt2Topo3BodyBBDTDecision\_TOS} or \\
+                         & \texttt{Bu\_Hlt2Topo4BodyBBDTDecision\_TOS}) \\
+    \hline
+    Run 2 trigger        & (\texttt{Bu\_L0Global\_TIS} or \texttt{Bu\_L0HadronDecision\_TOS}) \\
+    requirements         & and (\texttt{Bu\_Hlt1TrackMVADecision\_TOS} or \\
+                         & \texttt{Bu\_Hlt1TwoTrackMVADecision\_TOS}) \\
+                         & and (\texttt{Bu\_Hlt2Topo2BodyDecision\_TOS} or \\
+                         & \texttt{Bu\_Hlt2Topo3BodyDecision\_TOS} or \\
+                         & \texttt{Bu\_Hlt2Topo4BodyDecision\_TOS}) \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+\begin{frame}{Initial cuts}
+  \begin{center}
+    Rectangular cuts before BDT
+  \end{center}
+  \centering
+  \def\arraystretch{1.2}%
+  \begin{tabular}{|l|l|}
+    \hline
+    Standard cuts                     & Value \\
+    \hline
+    Bachelor momentum $p$             & $< \SI{100}{\giga\eV}$ \\
+    Bachelor has RICH                 & True \\
+    $K^\pm$ from $D$ momentum $p$     & $< \SI{100}{\giga\eV}$ \\
+    $K^\pm$ has RICH                  & True \\
+    $D$ invariant mass                & Within $\pm\SI{25}{\mega\eV}$ of $m_{D^0}^\text{PDG}$ \\
+    DecayTreeFitter (DTF) convergence & True \\
+    $B^\pm$ DTF mass range            & $[5080, 5800]\si{\mega\eV}$ \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+\begin{frame}{Boosted Decision Tree}
+  \begin{itemize}
+    \setlength\itemsep{1.2em}
+    \item{BDTG from TMVA Toolkit}
+    \item{Signal sample: $B^\pm\to DK^\pm$ and $B^\pm\to D\pi^\pm$ MC samples}
+    \item{Background sample: $B^\pm\to D\pi^\pm$ using $m_{B^\pm}^\text{DTF}\in[5800, 7000]\si{\mega\eV}$}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{BDT training particles}
+  \begin{center}
+    BDT training variables part 1
+  \end{center}
+  \centering
+  %\def\arraystretch{1.2}%
+  \begin{tabular}{|l|l|l|}
+    \hline
+    Name & Rank ($\%$) & Description \\
+    \hline
+    \texttt{log(D0\_RHO\_BPV)} & $7.7$ & $D$ radial distance to beamline \\
+    \texttt{log(Bu\_FDCHI2\_OWNPV)} & $6.3$ & $B^\pm$ flight distance $\chi^2$ \\
+    \texttt{log(Bu\_RHO\_BPV)} & $6.1$ & $B^\pm$ radial distance to beamline \\
+    \texttt{log(Bach\_PT)} & $6.1$ & Bachelor transverse momentum \\
+    \texttt{Bu\_PTASY\_1.5} & $5.3$ & $B^\pm$ asymmetry parameter \\
+    \texttt{log(1-D0\_DIRA\_BPV)} & $5.0$ & Angle between PV and $D$ \\
+    \texttt{log(Bu\_IPCHI2\_OWNPV)} & $4.8$ & $B^\pm$ impact parameter $\chi^2$ \\
+    \texttt{log(1-Bu\_DIRA\_BPV)} & $4.7$ & Angle between PV and $B^\pm$ \\
+    \texttt{log(h[1,2]\_PT)} & $4.4$ & $K^\pm$ transverse momentum \\
+    \texttt{Bu\_MAXDOCA} & $4.4$ & $B^\pm$ distance of closest approach \\
+    \texttt{log(Bach\_IPCHI2\_OWNPV)} & $4.1$ & Bachelor impact parameter $\chi^2$ \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+\begin{frame}{BDT training particles}
+  \begin{center}
+    BDT training variables part 2
+  \end{center}
+  \centering
+  %\def\arraystretch{1.2}%
+  \begin{tabular}{|l|l|l|}
+    \hline
+    Name & Rank ($\%$) & Description \\
+    \hline
+    \texttt{log(Bu\_constD0PV\_D0\_P)} & $3.7$ & $D$ momentum from DTF \\
+    \texttt{log(D0\_VTXCHI2DOF)} & $3.3$ & $D0$ vertex fit $\chi^2$ \\
+    \texttt{log(h[3,4]\_IPCHI2\_OWNPV)} & $3.3$ & $\pi^\pm$ impact parameter $\chi^2$ \\
+    \texttt{log(D0\_IPCHI2\_OWNPV)} & $3.2$ & $D$ impact parameter $\chi^2$ \\
+    \texttt{log(h[3,4]\_PT)} & $3.2$ & $\pi^\pm$ transverse momentum \\
+    \texttt{log(Bu\_PT)} & $2.8$ & $B^\pm$ transverse momentum \\
+    \texttt{log(h[1,2]\_P)} & $2.8$ & $K^\pm$ momentum \\
+    \texttt{log(Bach\_P)} & $2.7$ & Bachelor momentum \\
+    \texttt{log(Bu\_constD0PV\_P)} & $2.6$ & $B^\pm$ momentum from DTF \\
+    \texttt{log(h[1,2]\_IPCHI2\_OWNPV)} & $2.5$ & $K^\pm$ impact parameter $\chi^2$ \\
+    \texttt{D0\_MAXDOCA} & $2.5$ & $D$ distance of closest approach \\
+    \texttt{log(Bu\_VTXCHI2DOF)} & $2.0$ & $B^\pm$ vertex fit $\chi^2$ \\
+    \texttt{log(h[3,4]\_P)} & $1.9$ & $\pi^\pm$ momentum \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+\begin{frame}{BDT training results}
+  \begin{figure}
+    \centering
+    \vspace{-0.2cm}
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/BDToutput.png}
+      \caption{BDT output}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/BDToutputLog.png}
+      \caption{BDT output on a logarithmic scale}
+    \end{subfigure}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Charmless backgrounds from \texorpdfstring{$B^\pm\to K^+K^-\pi^+\pi^-K^\pm$}{B to K K pi pi K}}
+  \begin{itemize}
+    \item{Remove cut on DTF $\chi^2$}
+    \item{Look in the $D$ mass sideband $[1770, 1820]\si{\mega\eV}$}
+  \end{itemize}
+  \begin{figure}
+    \centering
+    \vspace{-0.2cm}
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/B2DKLower_Charmless.png}
+      \caption{No charmless cuts \\Yield: $\SI{2605(57)}{}$}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/B2DKLowerFDCut_Charmless.png}
+      \caption{Flight significance cut at $2$ \\Yield: $\SI{110(19)}{}$}
+    \end{subfigure}
+  \end{figure}
+  \begin{itemize}
+    \item{Choose flight significance cut at $2$}
+    \item{A cut larger than $\approx 3$ gives a charmless yield consistent with $0$}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Charmless backgrounds from \texorpdfstring{$B^\pm\to K^+K^-\pi^+\pi^-\pi^\pm$}{B to K K pi pi pi}}
+  \begin{figure}
+    \centering
+    \vspace{-0.2cm}
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/B2DpiLower_Charmless.png}
+      \caption{No charmless cuts}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/B2DpiLowerFDCut_Charmless.png}
+      \caption{Flight significance cut at $2$}
+    \end{subfigure}
+  \end{figure}
+  \begin{itemize}
+    \item{No charmless background observed in the $B^\pm\to D\pi^\pm$ channel!}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Mis-ID background from \texorpdfstring{$B^\pm\to(K\pi\pi\pi)_Dh^\pm$}{B to K pi pi pi h}}
+  \begin{itemize}
+    \item{Study using MC samples from 2018}
+    \item{Yields have been scaled to account for differences in sample size and branching fractions}
+    \item{$\pi\pi\pi\pi$ background is negligible}
+  \end{itemize}
+  \begin{figure}
+    \centering
+    \vspace{-0.2cm}
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/B2DK_Dmass_Background.png}
+      \caption{$D$ invariant mass distribution}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/YieldVSPIDK.png}
+      \caption{Signal and $K\pi\pi\pi$ background yield}
+    \end{subfigure}
+  \end{figure}
+  \begin{itemize}
+    \item{A cut at $\text{PIDK} > 0$ reduces the contamination from $7.2\%$ to $1.8\%$}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Final cuts}
+  \begin{center}
+    Cuts after BDT training
+  \end{center}
+  \centering
+  \def\arraystretch{1.2}%
+  \begin{tabular}{|l|l|}
+    \hline
+    Background suppression cuts & Value \\
+    \hline
+    BDTG                        & $< 0.75$ \\
+    Bachelor PID                & $\text{PIDK} > 4$ ($< 4$) for $DK$ ($D\pi$) \\
+    $K^\pm$ from $D$ PID        & $\text{PIDK} > 0$ \\
+    Flight significance         & $ > 2$ \\
+    DTF $\chi^2$                & $\ln(\chi^2) < 3$ \\
+    \hline
+  \end{tabular}
+\end{frame}
+
+\section{Global fit}
+\begin{frame}{Global fit}
+  \begin{center}
+    {\huge Global fit}
+  \end{center}
+\end{frame}
+
+\section{Global fit}
+\begin{frame}{Signal parameterisation}
+  \begin{itemize}
+    \setlength\itemsep{1.2em}
+    \item{PDF shape parameterization identical to LHCb-ANA-2020-001}
+    \item{Signal: Gaussian + Modified Gaussian}
+    \item{Shape fixed from MC, yield and width floated}
+    \item{Exponential background}
+  \end{itemize}
+  \vspace{0.5cm}
+  \begin{equation*}
+    f_\text{MG}(m|m_B, \sigma, \alpha_L, \alpha_R, \beta)\propto
+    \begin{cases}
+      \exp\Big(\frac{-\Delta m^2(1 + \beta\Delta m^2)}{2\sigma^2 + \alpha_L\Delta m^2}\Big), \quad \Delta m = m - m_B < 0 \\
+      \exp\Big(\frac{-\Delta m^2(1 + \beta\Delta m^2)}{2\sigma^2 + \alpha_R\Delta m^2}\Big), \quad \Delta m = m - m_B > 0 \\
+    \end{cases}
+  \end{equation*}
+\end{frame}
+
+\begin{frame}{Partially reconstructed background}
+  \begin{itemize}
+    \setlength\itemsep{1.3em}
+    \item{$B^\pm\to D\pi^\pm$:}
+    \begin{enumerate}
+    \setlength\itemsep{0.4em}
+      \item{$B^\pm\to (D^{*0}\to D^0[\pi^0])\pi^\pm$}
+      \item{$B^0\to (D^{*\mp}\to D^0[\pi^\mp])\pi^\pm$}
+      \item{$B^{\pm(0)}\to D^0[\pi^{0(\mp)}]\pi^\pm$}
+      \item{$B^\pm\to(D^{*0}\to D^0[\gamma])\pi^\pm$}
+    \end{enumerate}
+    \item{$B^\pm\to DK^\pm$:}
+    \begin{enumerate}
+      \setlength\itemsep{0.4em}
+      \item{$B^\pm\to (D^{*0}\to D^0[\pi^0])K^\pm$}
+      \item{$B^0\to (D^{*\mp}\to D^0[\pi^\mp])K^\pm$}
+      \item{$B^{\pm(0)}\to D^0[\pi^{0(\mp)}]K^\pm$}
+      \item{$B^\pm\to(D^{*0}\to D^0[\gamma])K^\pm$}
+      \item{$B_s^0\to\bar{D^0}[\pi^+]K^-$}
+      \item{Mis-ID from partially reconstructed $B^\pm\to D\pi^\pm$ channel}
+    \end{enumerate}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Global fit}
+  \begin{figure}
+    \centering
+    \includegraphics[width = 1.0\textwidth]{Plots/GlobalFit.png}
+    \caption{Global fit of $B^\pm$ mass distribution for the $DK^\pm$ channel (left) and $D\pi^\pm$ channel (right)}
+  \end{figure}
+  \vspace{-0.5cm}
+  \begin{itemize}
+    \item{$B^\pm\to DK^\pm$ yield: $\SI{2290(59)}{}$}
+    \item{$B^\pm\to D\pi^\pm$ yield: $\SI{33113(211)}{}$}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Global fit toy studies}
+  \begin{itemize}
+    \setlength\itemsep{1.2em}
+    \item{Generated $1000$ toy datasets using the fitted parameters}
+    \item{Almost all free parameters have pull distributions with zero mean and standard deviation $1$}
+    \item{Consistent with LHCb-ANA-2020-001}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}{Global fit toy studies}
+  \begin{figure}
+    \centering
+    \vspace{-0.2cm}
+    \begin{subfigure}{0.33\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/low_dpi_ratio_b2drho_vs_b2dstpi_value.png}
+      \caption{Value}
+    \end{subfigure}%
+    \begin{subfigure}{0.33\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/low_dpi_ratio_b2drho_vs_b2dstpi_error.png}
+      \caption{Error}
+    \end{subfigure}%
+    \begin{subfigure}{0.33\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/low_dpi_ratio_b2drho_vs_b2dstpi_pull.png}
+      \caption{Pull}
+    \end{subfigure}
+    \caption{\texttt{low\_dpi\_ratio\_b2drho\_vs\_b2dstpi}}
+  \end{figure}
+\end{frame}
+
+\begin{frame}{Global fit toy studies}
+  \begin{figure}
+    \centering
+    \vspace{-0.2cm}
+    \begin{subfigure}{0.33\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/low_dpi_ratio_b2drho_vs_b2dstpi_value.png}
+      \caption{Value}
+    \end{subfigure}%
+    \begin{subfigure}{0.33\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/low_dpi_ratio_b2drho_vs_b2dstpi_error.png}
+      \caption{Error}
+    \end{subfigure}%
+    \begin{subfigure}{0.33\textwidth}
+      \includegraphics[width = 1.0\textwidth]{Plots/low_dpi_ratio_b2drho_vs_b2dstpi_pull.png}
+      \caption{Pull}
+    \end{subfigure}
+    \caption{\texttt{low\_dpi\_ratio\_b2drho\_vs\_b2dstpi}}
   \end{figure}
 \end{frame}
 
